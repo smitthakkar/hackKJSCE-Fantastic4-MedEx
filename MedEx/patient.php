@@ -9,15 +9,15 @@ $conn = new mysqli($servername, $username, $password);
 
 // Check connection
 if (!$conn) {
-
+    
 	echo "Error";
-}
+} 
 
 
 ?>
 <html>
 <head>
-
+	
 <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -27,28 +27,25 @@ if (!$conn) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
-      <style>
-
-      </style>
-
+  
 </head>
 <body>
 <!-- Top Nav -->
 			<div class="row">
-
+		 
 			<nav>
 				<div class="nav-wrapper">
 				  <a href="#!" class="brand-logo center">Mr.Ramesh</a>
 				  <ul class="left hide-on-med-and-down">
-					<li><a href="badges.html">Back</a></li>
+					<li><a href="index.html">Back</a></li>
 					<li class="active"><a href="collapsible.html"><center> <img class=" circle responsive-img" src="img/Profile.JPG" height="100px" width="100px"></center></a></li>
 				  </ul>
 				</div>
 			  </nav>
-			</div>
-
+			</div>	
+			
 <!-- Chat type -->
-
+  
     <div class="row">
 	<div class="col m1"></div>
     <div class="col m10 card" >
@@ -56,11 +53,11 @@ if (!$conn) {
 	    <li class="tab col s3"><a class="active" href="#doctor">Doctors</a></li>
         <li class="tab col s3"><a  href="#chemist">Chemist</a></li>
               </ul>
-
+   
     <div id="chemist" class="col m10">
-
+				
 						<ul class="collection" id="Chemist">
-							<li class="collection-item avatar perm_identity" id="chem1" >
+							<li class="collection-item avatar" id="chem1" >
 							  <img src="images/yuna.jpg" alt="" class="circle">
 							  <span class="title">Bharthi Medical</span>
 							  <p>Delivery status<br>
@@ -88,7 +85,7 @@ if (!$conn) {
 	 <div id="div5"></div>
     <div id="doctor" class="col m10">
 	<ul class="collection" id="Pat">
-							<li class="collection-item avatar"><!-- perm_identity-->
+							<li class="collection-item avatar">
 							  <img src="images/yuna.jpg" alt="" class="circle">
 							  <span class="title">Doc.Khanna</span>
 							  <p>Avoid fried food <br>
@@ -117,41 +114,34 @@ if (!$conn) {
     <a class="btn-floating btn-large red">
       <i class="large material-icons">mode_edit</i>
     </a>
+    
     <ul>
-      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating red" onclick="showpress()" ><i class="material-icons">insert_chart</i></a></li>
+     
+      	<li><a class="btn-floating green" href="framelist.php"><i class="material-icons">publish</i></a></li>
+
       <li><a class="btn-floating blue" onclick="showpres()"><i class="material-icons">attach_file</i></a></li>
     </ul>
   </div>
-<div title="pres" style="display:none" id="pres">
+  
+  <div title="pres" style="display:none" id="pres">
 	<?php
 	  $db_name="medex";
 	$username="root";
 	$password="";
 	$host="localhost";
-	$tb_name="Prescription";
+	$tb_name="prescription";
 	mysql_connect($host,$username,$password);
 	mysql_select_db($db_name);
-
-	$result=mysql_query("SELECT * FROM Prescription");
-	echo "<table>
-	<tr>
-	<td>Medicine Name</td>
-	<td>Number of Days</td>
-	<td>Number of Times in a day</td>
-	<td>Time of the Day</td>
-	</tr> ";
+	$result=mysql_query("SELECT * FROM prescription");
+	echo "<table><tr><td>Medicine Name</td><td>Number of Days</td><td>Number of Times in a day</td><td>Time of the Day</td></tr> ";
+	echo "<br>";
 	while($row = mysql_fetch_array($result)){
 		echo "<tr>";
-	echo "<td>". $row['med_name']." ";</td>
-	echo "<td>" .$row['days']." ";</td>
-	echo "<td>" .$row['times_day']." ";</td>
-	echo "<td>". $row['time_of_day']." ";</td>
-	</tr>
+	echo "<td>". $row['med_name']." </td><td>" .$row['days']." </td><td>" .$row['times_day']."</td><td>". $row['time_of_day']." </td></tr>";
 	//echo "<br>";
 	}
-	</table>
+	echo "</table>"
 	?>
 	<script>
 	function showpres(){
@@ -160,6 +150,78 @@ if (!$conn) {
 	}
 	</script>
 </div>
+  <div title="pres" style="display:none" id="press">
+	<?php 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname="MedEx";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbname);
+
+// Check connection
+if (!$conn) {
+    
+	echo "Error";
+} 
+$pid="0";
+$bid="1";
+
+$sql="SELECT med_name from prescription where PID='$pid' order by med_name asc";
+$sql2="SELECT med_name,cost,tcost from bill where PID='$pid' order by med_name asc";
+
+	$result = $conn->query($sql);$result2 = $conn->query($sql2);
+   echo "<table>";
+   echo "<tr><td>Medicine</td><td>Cost</td><td>Dose cost</td></tr>";
+	if ($result->num_rows > 0 && $result2->num_rows > 0) {
+		// output data of each row
+		$flag=0;
+		while(($row = $result->fetch_assoc()) && ($row2 = $result2->fetch_assoc())) {
+			//echo $row["med_name"]." n".$row2["med_name"];
+			if($row["med_name"]==$row2["med_name"])
+			echo  "<tr><td>".$row2["med_name"]. "</td> <td>" . $row2["cost"]. "</td><td>".$row2["tcost"]."</td></tr>";
+		    
+			else {
+				echo  "<tr style='color:red'><td>".$row2["med_name"]. "</td><td>" . $row2["cost"]. "</td><td>".$row2["tcost"]."</td></tr>";
+		    
+				$flag=1;
+			}
+		}
+	} else {
+		echo "0 results";
+	}
+	echo "</table>";
+	if($flag==0)echo '<br>Correct';
+	else echo '<br>mismatch';
+
+
+?>
+	<script>
+	function showpress(){
+		var pres1 = document.getElementById("press");
+		pres1.style.display = pres1.style.display === "none" ? "block": "none";
+	}
+	</script>
+</div>
+  
+        
+
+
+
+
+
+						
+		
+        
+
+
+
+
+
+						
+			
+			
 </body>
 
 

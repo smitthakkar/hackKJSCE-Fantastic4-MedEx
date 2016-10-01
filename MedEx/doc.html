@@ -37,7 +37,7 @@ if (!$conn) {
 				<div class="nav-wrapper">
 				  <a href="#!" class="brand-logo center">Doc.Khanna</a>
 				  <ul class="left hide-on-med-and-down">
-					<li><a href="badges.html">Back</a></li>
+					<li><a href="index.html">Back</a></li>
 					<li class="active"><a href="collapsible.html"><center> <img class=" circle responsive-img" src="img/Profile.JPG" height="100px" width="100px"></center></a></li>
 				  </ul>
 				</div>
@@ -110,17 +110,46 @@ if (!$conn) {
 	</div> </div>
 	<div class="col m1"></div>
   </div>
+  <div style="none">
+  </div>
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red">
       <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+      <li><a class="btn-floating red" ><i class="material-icons">insert_chart</i></a></li>
+     
+      	<li><a class="btn-floating green" href="framelist.php"><i class="material-icons">publish</i></a></li>
+
+      <li><a class="btn-floating blue" onclick="showpres()"><i class="material-icons">attach_file</i></a></li>
     </ul>
   </div>
+  <div title="pres" style="display:none" id="pres">
+	<?php
+	  $db_name="medex";
+	$username="root";
+	$password="";
+	$host="localhost";
+	$tb_name="prescription";
+	mysql_connect($host,$username,$password);
+	mysql_select_db($db_name);
+	$result=mysql_query("SELECT * FROM prescription");
+	echo "<table><tr><td>Medicine Name</td><td>Number of Days</td><td>Number of Times in a day</td><td>Time of the Day</td></tr> ";
+	echo "<br>";
+	while($row = mysql_fetch_array($result)){
+		echo "<tr>";
+	echo "<td>". $row['med_name']." </td><td>" .$row['days']." </td><td>" .$row['times_day']."</td><td>". $row['time_of_day']." </td></tr>";
+	//echo "<br>";
+	}
+	echo "</table>"
+	?>
+	<script>
+	function showpres(){
+		var pres1 = document.getElementById("pres");
+		pres1.style.display = pres1.style.display === "none" ? "block": "none";
+	}
+	</script>
+</div>
   
         
 

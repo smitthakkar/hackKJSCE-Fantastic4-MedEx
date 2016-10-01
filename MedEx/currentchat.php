@@ -25,6 +25,8 @@ if ($conn->query($sql) === TRUE) {
    // echo "New record created successfully";
 }
 ?>
+<script>var objDiv = document.getElementById("chattext");
+objDiv.scrollTop = objDiv.scrollHeight;</script>
 <html>
 <head>
 	
@@ -37,21 +39,15 @@ if ($conn->query($sql) === TRUE) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
-	  
+	        // <script type="text/javascript" src="js/scroll.js"></script>
+
   <style>
   #chattext {
     height:80%;
-    overflow-y: scroll;
+    overflow: scroll;
 }
   </style>
 </head>
-<script>
-
-$("#chattext").animate({ scrollTop: $(document).height() }, "slow");
-  
-
-
-</script>
 <body>
 
    <div class="row">
@@ -111,7 +107,7 @@ $("#chattext").animate({ scrollTop: $(document).height() }, "slow");
 	}
 	?>	
 	 </div>
-     <form class="login_form" method="GET" action="framelist.php">
+     <form class="login_form" method="GET" action="currentchat.php">
 	<div>Message: <input type="text" name="usermessage" />
 	<input type="submit" value="Send" name="Send" /></div>
 	</form>

@@ -12,8 +12,8 @@ if (!$conn) {
     
 	echo "Error";
 } 
-$src="Sam";
-$dest="John";
+$src="John";
+$dest="Sam";
 $sql="";
 if(isset($_GET['usermessage'])){
 	$mess=$_GET['usermessage'];//echo $mess;

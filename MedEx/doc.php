@@ -35,7 +35,7 @@ if (!$conn) {
 		 
 			<nav>
 				<div class="nav-wrapper">
-				  <a href="#!" class="brand-logo center">Mr.Ramesh</a>
+				  <a href="#!" class="brand-logo center">Doc.Khanna</a>
 				  <ul class="left hide-on-med-and-down">
 					<li><a href="index.html">Back</a></li>
 					<li class="active"><a href="collapsible.html"><center> <img class=" circle responsive-img" src="img/Profile.JPG" height="100px" width="100px"></center></a></li>
@@ -50,9 +50,9 @@ if (!$conn) {
 	<div class="col m1"></div>
     <div class="col m10 card" >
       <ul class="tabs">
-	    <li class="tab col s3"><a class="active" href="#doctor">Doctors</a></li>
-        <li class="tab col s3"><a  href="#chemist">Chemist</a></li>
-              </ul>
+        <li class="tab col s3"><a class="active" href="#chemist">Chemist</a></li>
+        <li class="tab col s3"><a  href="#patient">Patients</a></li>
+      </ul>
    
     <div id="chemist" class="col m10">
 				
@@ -60,21 +60,21 @@ if (!$conn) {
 							<li class="collection-item avatar" id="chem1" >
 							  <img src="images/yuna.jpg" alt="" class="circle">
 							  <span class="title">Bharthi Medical</span>
-							  <p>Delivery status<br>
+							  <p>Prescription Alternative for Crocin <br>
 								 <align="right">Timestamp: 00:05
 							  </p>
 							</li>
 							<li class="collection-item avatar" id="chem2">
 							  <img src="images/yuna.jpg" alt="" class="circle">
 							  <span class="title">Global Medical</span>
-							  <p>Waiting confirmation for prescreption from Dr.Khanna<br>
+							  <p>Waiting confirmation for bill <br>
 								 <align="right">Timestamp: 12:05
 							  </p>
 							</li>
 							<li class="collection-item avatar" id="chem3">
 							  <img src="images/yuna.jpg" alt="" class="circle">
 							  <span class="title">Prime Medical</span>
-							  <p>Delay in delivery <br>
+							  <p>Additional medicine required <br>
 								 <align="right">Timestamp: 13:27
 							  </p>
 							</li>
@@ -83,26 +83,26 @@ if (!$conn) {
 	 <div id="div3"></div>
 	 <div id="div4"></div>
 	 <div id="div5"></div>
-    <div id="doctor" class="col m10">
+    <div id="patient" class="col m10">
 	<ul class="collection" id="Pat">
 							<li class="collection-item avatar">
 							  <img src="images/yuna.jpg" alt="" class="circle">
-							  <span class="title">Doc.Khanna</span>
-							  <p>Avoid fried food <br>
+							  <span class="title">Om Mehta</span>
+							  <p>Suggestions  <br>
 								 Timestamp: 00:05
 							  </p>
 							</li>
 							<li class="collection-item avatar">
 							  <img src="images/yuna.jpg" alt="" class="circle">
-							  <span class="title">Doc.Sunil</span>
-							  <p>Heavy Diabetic medication from Doc.Kaur, eat every hour or so. <br>
+							  <span class="title">Prajakta</span>
+							  <p>Prescriptions from other doctors<br>
 								 Timestamp: 12:03
 							  </p>
 							</li>
 							<li class="collection-item avatar">
 							  <img src="images/yuna.jpg" alt="" class="circle">
 							  <span class="title">Sunny</span>
-							  <p>Visit me once the prescribed medicines are over<br>
+							  <p>Increased muscle pain<br>
 								 Timestamp: 09:03
 							  </p>
 							</li>
@@ -110,11 +110,12 @@ if (!$conn) {
 	</div> </div>
 	<div class="col m1"></div>
   </div>
+  <div style="none">
+  </div>
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red">
       <i class="large material-icons">mode_edit</i>
     </a>
-    
     <ul>
       <li><a class="btn-floating red" onclick="showpress()" ><i class="material-icons">insert_chart</i></a></li>
      
@@ -205,14 +206,6 @@ $sql2="SELECT med_name,cost,tcost from bill where PID='$pid' order by med_name a
 	</script>
 </div>
   
-        
-
-
-
-
-
-						
-		
         
 
 
