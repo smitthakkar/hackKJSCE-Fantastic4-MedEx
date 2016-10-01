@@ -1,0 +1,69 @@
+<html>
+
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Patient's sign up</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/signup.css">
+    </head>
+    <body>
+
+      <form action="index.html" method="post">
+      
+        <h1>Patient's sign up</h1>
+        
+        <fieldset>
+          <legend><span class="number">1</span>Your basic info</legend>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+          
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="user_email">
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="user_password">
+		  
+		  <label for="dob">DOB:</label>
+          <input type="date" id="dob" name="user_dob">
+          
+          
+		    <label for="age">Age:</label>
+          <input type="text" id=age" name="user_age">
+		  
+		    <label>Contact Number:</label>
+          <input type="text" id="contact" name="user_contact">
+		  
+		    <label>Sex:</label>
+          <input type="radio" id="sex" value="M" name="user_sex">Male<br>
+		  <input type="radio" id="sex" value="F" name="user_sex">Female<br>
+
+		  
+		  
+		  
+          
+        </fieldset>
+        
+        <fieldset>
+          <legend><span class="number">2</span>Your profile</legend>
+          <label for="bio">Medical issues:</label>
+          <textarea id="issues" name="user_issues"></textarea>
+        </fieldset>
+        <fieldset>
+       
+			
+		 <label>Medical Insurance:</label>
+          <input type="radio" id="mi" value="Y" name="user_ins">Yes<br>
+		  <input type="radio" id="mi" value="N" name="user_ins">No<br>
+        
+          
+		 <label>Education detail:</label>
+          <input type="checkbox" value="attached" name="user_detail"><label class="light">Attached</label><br>
+            <input type="checkbox" value="not attached" name="user_detail"><label class="light">Not Attached</label><br>
+        </fieldset>
+        <button type="submit">Sign Up</button>
+      </form>
+      
+    </body>
+</html>
