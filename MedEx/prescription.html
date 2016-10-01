@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
-  
+
 </head>
 <body>
 	<div class="row">
@@ -16,18 +16,16 @@
 	      <div class="col s8">
 	      <div class="card-panel">
       <span class="blue-text text-darken-2">
-			<form action=""> <!--    . -->
+			<form action="prescription.php"> <!--    . -->
 				<h4>Prescription For: Patient_Name</h2>
 				<br>
-				<input type="text" placeholder="Name of Medicine"><br>
-				<input type="text" placeholder="Days to take medicine"><br>
-				<input type="text" placeholder="Number of times per day"><br>
-				<input type="text" placeholder="Time of the day"><br>
-				<form action="prescription">
+				<input type="text" placeholder="Name of Medicine" name="name"><br>
+				<input type="text" placeholder="Days to take medicine" name="days"><br>
+				<input type="text" placeholder="Number of times per day" name="no"><br>
+				<input type="text" placeholder="Time of the day" name="time"><br>
 					<button type="submit">
 					Add Medicine
 					</button>
-				</form>
 			</form>
 			</span>
     </div>
